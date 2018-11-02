@@ -1,0 +1,5 @@
+gem install suspenders - rails с нужными гемами
+
+suspenders projectname (поменять версию в .ruby-version, Gemfile на свежую версию рельс)
+
+bin/rails server

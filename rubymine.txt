@@ -1,0 +1,3 @@
+bin/rubymine.sh - файл для открытия
+
+tools -> create desktop entry
