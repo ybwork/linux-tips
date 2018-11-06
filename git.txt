@@ -4,7 +4,7 @@ git branch name_branch - создаёт ветку
 
 git checkout - переключает на ветку
 
-git checkout -b name_branch - создаёт ветку и переключает на неё
+git checkout -b name_branch - создаёт ветку и переключает на неё	
 
 git branch -v - показывает последний коммит на ветке
 
@@ -17,3 +17,32 @@ git branch -d - удалить ветку если слил всё в масте
 git branch -D - удалить ветку если не слил всё в мастер, но нужно удалить
 
 git merge name_branch - делаем с той ветки на которую хотим залить, а имя должно быть той ветки, которую сливаем
+
+git push name_repo name_branch - имя ветки может быть любое, в том числе и то на которой я сейчас захожу
+
+merge/pull request.
+
+	создаём ветку
+
+	делаем коммит
+
+	пушим ветку
+
+	в gitlab или github делаем merge/pull request
+
+A properly formed Git commit subject line should always be able to complete the following sentence:
+If applied, this commit will your subject line here
+For example:
+
+If applied, this commit will refactor subsystem X for readability
+If applied, this commit will update getting started documentation
+If applied, this commit will remove deprecated methods
+If applied, this commit will release version 1.0.0
+If applied, this commit will merge pull request #123 from user/branch
+
+Notice how this doesn’t work for the other non-imperative forms:
+
+If applied, this commit will fixed bug with Y
+If applied, this commit will changing behavior of X
+If applied, this commit will more fixes for broken stuff
+If applied, this commit will sweet new API methods

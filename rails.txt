@@ -3,3 +3,90 @@ gem install suspenders - rails с нужными гемами
 suspenders projectname (поменять версию в .ruby-version, Gemfile на свежую версию рельс)
 
 bin/rails server
+
+bin/rails generate controller Welcome index
+
+config/routes.rb -> resources :articles
+
+bin/rails generate controller Articles
+
+bin/rails routes
+
+<%= form_with scope: :article, url: articles_path, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+def create
+  render plain: params[:article].inspect
+end
+
+bin/rails generate model Article title:string text:text
+
+bin/rails db:migrate
+
+bin/rails db:migrate RAILS_ENV=production
+
+Частой практикой является помещать стандартные экшны CRUD в каждом контроллере в следующем порядке: index, show, new, edit, create, update и destroy.
+
+<%= link_to 'New article', new_article_path %>
+
+валидация в моделях
+
+validates :title, presence: true,
+                  length: { minimum: 5 }
+
+Отметьте, что в экшне create мы использовали render вместо redirect_to, когда save возвращает false. Метод render использован, чтобы объект @article был передан назад в шаблон new, когда он будет отрендерен. Этот рендеринг выполняется в рамках того же запроса, что и отправка формы, в то время как redirect_to сообщает браузеру выполнить другой запрос. Мы сделали так, потому что в противном случае @article будет nil во вьюхе, и вызов @article.errors.any? вызовет ошибку.
+
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
+    end
+
+@article.errors.any?
+
+@article.errors.full_messages
+
+Наша страница edit очень похожа на страницу new, фактически они используют один и тот же код для отображения формы. Давайте уберем это дублирование, использовав партиал вьюхи. По соглашению, файлы партиалов начинаются со знака подчеркивания.
+
+Наша страница edit очень похожа на страницу new, фактически они используют один и тот же код для отображения формы. Давайте уберем это дублирование, использовав партиал вьюхи. По соглашению, файлы партиалов начинаются со знака подчеркивания.
+
+bin/rails generate model Comment commenter:string body:text article:references
+
+has_many :comments
+
+@article.comments
+
+resources :articles do
+  resources :comments
+end
+
+@article.comments.each do |comment|
+
+link_to 'Delete comment', [comment.article, comment]
+
+gem "authlogic" -> bundle install
+
+rake db:rollback
+
+rails destroy
+
+для работы с картинками carrierwave
+
+
+
+
+
+
