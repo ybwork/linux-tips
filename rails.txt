@@ -1,16 +1,50 @@
-gem install suspenders - rails с нужными гемами
+Оглавление.
 
-suspenders projectname (поменять версию в .ruby-version, Gemfile на свежую версию рельс)
+  Установка gem
 
-bin/rails server
+  Базовые команды
 
-bin/rails generate controller Welcome index
+  Где правильно делать order_by. (?)
 
-config/routes.rb -> resources :articles
+  Чистый проект.
 
-bin/rails generate controller Articles
+  Роутинг.
 
-bin/rails routes
+Установка gem.
+
+  gem install suspenders
+
+  gamefile -> gem "suspenders" -> bundle install
+
+Базовые команды.
+  
+  bin/rails server
+
+  bin/rails generate controller Welcome index
+
+  bin/rails routes
+
+  bin/rails generate model Article title:string text:text
+
+  bin/rails db:migrate
+
+  bin/rails db:migrate RAILS_ENV=production
+
+Где правильно делать order_by.
+
+Чистый проект.
+  
+  Можно использовать gem suspenders. Перед запуском поменять версию в .ruby-version, Gemfile на нужную версию.
+
+Роутинг.
+
+  Объявляются в config/routes.rb
+
+  get 'admin', action: :index, controller: 'admin', as: 'admin' - одиночный роут
+
+  resources :articles - роут ресурса
+
+
 
 <%= form_with scope: :article, url: articles_path, local: true do |form| %>
   <p>
@@ -32,11 +66,6 @@ def create
   render plain: params[:article].inspect
 end
 
-bin/rails generate model Article title:string text:text
-
-bin/rails db:migrate
-
-bin/rails db:migrate RAILS_ENV=production
 
 Частой практикой является помещать стандартные экшны CRUD в каждом контроллере в следующем порядке: index, show, new, edit, create, update и destroy.
 
@@ -77,14 +106,8 @@ end
 
 link_to 'Delete comment', [comment.article, comment]
 
-gem "authlogic" -> bundle install
-
-rake db:rollback
-
-rails destroy
-
 для работы с картинками carrierwave
-
+  
 
 
 
