@@ -14,6 +14,18 @@
 
   Модели.
 
+  Формы.
+
+  Вывод ошибок валидации.
+
+  Ссылки во view.
+
+  Rubocop.
+
+  Carriview.
+
+  Ошибки.
+
 Установка gem.
 
   gem install suspenders
@@ -48,6 +60,14 @@
 
   resources :articles - роут ресурса
 
+  resources :articles do - вложенный ресурсный роут (например один из них articles/comments/new)
+    resources :comments
+  end
+
+  namespace :admin_panel, path: 'admin' do - вложенный ресурсный роут с строго заданным путём
+    resources :events
+  end
+
 Котроллеры.
 
   Частой практикой является помещать стандартные экшны CRUD в каждом контроллере в следующем порядке: index, show, new, edit, create, update и destroy.
@@ -70,42 +90,64 @@
 
   validates :name, presence: true, length: {maximum: 30} - обычная валидация
 
+Rubocop.
 
-<%= form_with scope: :article, url: articles_path, local: true do |form| %>
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+  rubocop
 
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
+  rubocop --fix
 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+  rubocop -a
 
-<%= link_to 'New article', new_article_path %>
+  rubocop --auto-correct
 
-@article.errors.any?
+Формы.
 
-@article.errors.full_messages
+  <%= form_with scope: :article, url: articles_path, local: true do |form| %>
+  <% end %>
 
-Наша страница edit очень похожа на страницу new, фактически они используют один и тот же код для отображения формы. Давайте уберем это дублирование, использовав партиал вьюхи. По соглашению, файлы партиалов начинаются со знака подчеркивания.
+  <%= form_for [:admin_panel, @event], local: true, multipart: true do |form| %>
+    <%= form.label :organizer %>
+    <%= select_tag(:organizer_id, options_for_select(Organizer.all.collect.each {|org| [org.name, org.id]})) %>
+  <% end %>
 
-@article.comments
+  Есть партиал формы. Нужны когда используем одну и ту же форму в нескольких местах. Название начинается со знака подчеркивания _form.html.erb. В шаблоне такие формы подключаются через <%= render 'form' %>
 
-resources :articles do
-  resources :comments
-end
+Вывод ошибок валидации.
 
-@article.comments.each do |comment|
+  <% if @subscription.errors.any? %>
+    <h5>Validation errors:</h5>
+    <ul>
+      <% @subscription.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-link_to 'Delete comment', [comment.article, comment]
+Ссылки во view.
 
-для работы с картинками carrierwave
+  <%= link_to 'Events', events_path %>
+
+  <%= link_to 'More...', event_path(event) %>
+
+  <%= link_to 'Delete comment', [comment.article, comment] %>
+
+Rubocop.
+
+  Для валидации кода на стандарт.
+  
+Carrierwave.
+
+  для работы с картинками.
+
+Ошибки.
+
+  `initialize': Address already in use - bind(2) for "127.0.0.1" port 3000
+
+      lsof -wni tcp:3000
+
+      kill -9 3366 (3366 это значение, которое нужно посмотреть в выводе предыдущей команды в колонке PID)
+
+
   
 
 

@@ -1,28 +1,34 @@
-git branch - show all
+Команды.
 
-git branch name_branch - создаёт ветку
+	git branch - show all
 
-git checkout - переключает на ветку
+	git branch name_branch - создаёт ветку
 
-git checkout -b name_branch - создаёт ветку и переключает на неё	
+	git checkout - переключает на ветку
 
-git branch -v - показывает последний коммит на ветке
+	git checkout -b name_branch - создаёт ветку и переключает на неё	
 
-git branch --merged - посмотреть те ветки, которые слил с текущей
+	git branch -v - показывает последний коммит на ветке
 
-git branch --no-merged - посмотреть те ветки, которые пока ещё не слили в текущую ветку
+	git branch --merged - посмотреть те ветки, которые слил с текущей
 
-git branch -d - удалить ветку если слил всё в мастер
+	git branch --no-merged - посмотреть те ветки, которые пока ещё не слили в текущую ветку
 
-git branch -D - удалить ветку если не слил всё в мастер, но нужно удалить
+	git branch -d - удалить ветку если слил всё в мастер
 
-git merge name_branch - делаем с той ветки на которую хотим залить, а имя должно быть той ветки, которую сливаем
+	git branch -D - удалить ветку если не слил всё в мастер, но нужно удалить
 
-git push name_repo name_branch - имя ветки может быть любое, в том числе и то на которой я сейчас захожу
+	git merge name_branch - делаем с той ветки на которую хотим залить, а имя должно быть той ветки, которую сливаем
 
-git log - просмотр коммитов
+	git push name_repo name_branch - имя ветки может быть любое, в том числе и то на которой я сейчас захожу
 
-merge/pull request.
+	git log - просмотр коммитов
+
+	git rebase master - добавляет коммиты, которые делались после merge request в ветку master
+
+	git push --force
+
+Merge request.
 
 	создаём ветку
 
@@ -32,19 +38,28 @@ merge/pull request.
 
 	в gitlab или github делаем merge/pull request
 
-A properly formed Git commit subject line should always be able to complete the following sentence:
-If applied, this commit will your subject line here
-For example:
+Rebase.
 
-If applied, this commit will refactor subsystem X for readability
-If applied, this commit will update getting started documentation
-If applied, this commit will remove deprecated methods
-If applied, this commit will release version 1.0.0
-If applied, this commit will merge pull request #123 from user/branch
+	Когда создал merge request и продолжил делать коммиты на ветке events, git не видит коммиты после merge request. Чтобы исправить это нужно:
 
-Notice how this doesn’t work for the other non-imperative forms:
+		Сделать коммит на ветке events
 
-If applied, this commit will fixed bug with Y
-If applied, this commit will changing behavior of X
-If applied, this commit will more fixes for broken stuff
-If applied, this commit will sweet new API methods
+		Переключиться на ветку master
+
+		Сделать pull - git pull origin master
+
+		Переключиться на ветку events
+
+		Сделать rebase - git rebase master - добавляет коммиты, которые делались после merge request в ветку master
+
+		Остаться на ветке events
+
+		Сделать push force - git push --force
+
+		Если после review есть ошибки, продолжить исправлять их на ветке events
+
+Commit.
+
+	Точка в конце не нужна.
+
+	Должен называться по форме refactor subsystem X for readability.

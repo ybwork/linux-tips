@@ -1,23 +1,25 @@
-psql - доступ к командной строке
+Команды.
 
-exit - выход из командной строки
+	psql - доступ к командной строке
 
-sudo -i -u postgres - использование аккаунта на моём сервере
+	exit - выход из командной строки
 
-\q - выход из аккаунта на моём сервере
+	sudo -i -u postgres - использование аккаунта на моём сервере
 
-ALTER USER postgres PASSWORD ''; - сменить пароль для postgres
+	\q - выход из аккаунта на моём сервере
 
-Если linux, то:
+	ALTER USER postgres PASSWORD ''; - сменить пароль для postgres
 
-- открыть файл /etc/postgresql/10/main/pg_hba.conf
+Если linux.
 
-- убедиться, что есть строка local all postgres peer
+	Открыть файл /etc/postgresql/10/main/pg_hba.conf
 
-- CREATE USER yetbetter WITH PASSWORD 'asdf1234'; - создаёт пользователя (если это linux, то нужно чтобы имя и пароль от компа совпадали)
+	Убедиться, что есть строка local all postgres peer
 
-- выведет CREATE ROLE
+	CREATE USER yetbetter WITH PASSWORD 'asdf1234'; - создаёт пользователя (если это linux, то нужно чтобы имя и пароль от компа совпадали)
 
-- ввести роль USER 
+	Выведет CREATE ROLE
+
+	Ввести роль USER 
 
 
