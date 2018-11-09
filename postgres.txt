@@ -10,6 +10,8 @@
 
 	ALTER USER postgres PASSWORD ''; - сменить пароль для postgres
 
+	\du - показыввает таблицу с пользователями
+
 Если linux.
 
 	Открыть файл /etc/postgresql/10/main/pg_hba.conf

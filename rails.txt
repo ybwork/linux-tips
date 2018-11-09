@@ -24,6 +24,8 @@
 
   Carriview.
 
+  Развётрывание.
+
   Ошибки.
 
 Установка gem.
@@ -137,7 +139,15 @@ Rubocop.
   
 Carrierwave.
 
-  для работы с картинками.
+  Для работы с картинками.
+
+Развёртывание.
+
+  rvm use 2.5.3 (вводим сюда нужную версию ruby)
+
+  bundle install
+
+  Если появляетс ошибка Please run yarn install to update, то переходим в config/environments/development.rb и изменяем св-во check_yarn_integrity на false
 
 Ошибки.
 
