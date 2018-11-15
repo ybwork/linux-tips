@@ -54,6 +54,8 @@
 
   bin/rails db:migrate RAILS_ENV=production
 
+  rails g migration AddFileCodeToAttachments - создаёт новую миграцию
+
 Где правильно делать order_by.
 
 Чистый проект.

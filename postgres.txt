@@ -44,6 +44,8 @@
 
 	createdb ctw_development (CREATE DATABASE dbname;)
 
+	\d table_name - показывает все колонки в таблице
+
 Настройка.
 
 	Открыть файл 	
