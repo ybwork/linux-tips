@@ -28,6 +28,8 @@
 
   Ошибки.
 
+  Поднятие проекта.
+
 Установка gem.
 
   gem install suspenders
@@ -43,6 +45,10 @@
   bin/rails routes
 
   bin/rails generate model Event title:string text:text organizers:references
+
+  rake db:create:all
+
+  rake db:migrate
 
   bin/rails db:migrate
 
@@ -157,6 +163,22 @@ Carrierwave.
 
       kill -9 3366 (3366 это значение, которое нужно посмотреть в выводе предыдущей команды в колонке PID)
 
+
+Поднятие проекта.
+
+	стянули
+
+	bundle install
+
+	rake db:create:all
+
+	rake db:migrate
+
+	Если "PG::InsufficientPrivilege: ERROR:  permission denied to create extension "pg_trgm" HINT:  Must be superuser to create this extension.", то:
+
+  		postgres=# ALTER ROLE user CREATEROLE SUPERUSER;
+
+  	Установка yarn - sudo npm install yarn -g
 
   
 
